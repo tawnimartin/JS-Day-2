@@ -36,6 +36,7 @@ function noOp(parameter) {
 // that is passed in.
 
 function double(myNum) {
+  var myNum
 
   return myNum * 2;
 
@@ -49,6 +50,7 @@ function double(myNum) {
 // it should return the number multiplied by itself.
 
 function square(myNum) {
+  var myNum
 
   return myNum * myNum;
 
@@ -63,6 +65,7 @@ function square(myNum) {
 // and return it.
 
 function sum(myArr) {
+  var newNum, myArr
 
   newNum = 0;
 
@@ -86,6 +89,7 @@ function sum(myArr) {
 // HINT: use an array and a for loop
 
 function letterIndex(myLtr) {
+  var myLtr, alphaArray
 
   alphaArray = { "A" : 1, "B" : 2, "C" : 3, "D" : 4, "E" : 5, "F" : 6, "G" : 7, "H" : 8, "I" : 9, "J" : 10, "K" : 11, "L" : 12, "M" : 13, "N" : 14, "O" : 15, "P" : 16, "Q" : 17, "R" : 18, "S" : 19, "T" : 20, "U" : 21, "V" : 22, "W" : 23, "X" : 24, "Y" : 25, "Z" : 26};
 
@@ -108,6 +112,7 @@ function letterIndex(myLtr) {
 // HINT: use an array and the modulo (%) operator
 
 function reverseLetterIndex(myNum) {
+  var alphaArray, myNum
 
   var alphaArray = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ];
 
@@ -128,24 +133,30 @@ function reverseLetterIndex(myNum) {
 // HINT: use the previous 2 functions
 
 function rot13(givenString) {
+  var newSentenceArray, words, myLettersArray, newi, newNum, cipherString
+
+  function letters() {
+
+    myLettersArray = words[i].split("");
+
+      for (newi = 0; newi < myLettersArray.length; newi++ ) {
+
+        newNum = (letterIndex(myLettersArray[newi]) + 13);
+
+        newSentenceArray.push(reverseLetterIndex(newNum));
+      }
+   }
 
   newSentenceArray = [];
 
   words = givenString.split(" ");
 
     for (i = 0; i < words.length; i++ ) {
-
-      myLettersArray = words[i].split("");
-        
-      for (newi = 0; newi < myLettersArray.length; newi++ ) {
-
-        newNum = (letterIndex(myLettersArray[newi]) + 13);
-
-        newSentenceArray.push(reverseLetterIndex(newNum));
-          }
+  
+      letters();
 
       newSentenceArray.push(" ");
-      }
+    }
       
   cipherString = newSentenceArray.join("");
 
