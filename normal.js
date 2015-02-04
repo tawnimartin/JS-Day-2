@@ -64,14 +64,11 @@ function square(myNum) {
 
 function sum(myArr) {
 
-	var newNum = 0;
-	var arrNum;
+	newNum = 0;
 
-	for (var i = 0; i < myArr.length; i++ ) {
+	for (i = 0; i < myArr.length; i++ ) {
 
-		arrNum = myArr[i];
-
-		newNum += arrNum;
+		newNum += myArr[i];
 	}
 	
 	return newNum;
@@ -90,11 +87,9 @@ function sum(myArr) {
 
 function letterIndex(myLtr) {
 
-	var myLtr = myLtr.toUpperCase();
+  alphaArray = { "A" : 1, "B" : 2, "C" : 3, "D" : 4, "E" : 5, "F" : 6, "G" : 7, "H" : 8, "I" : 9, "J" : 10, "K" : 11, "L" : 12, "M" : 13, "N" : 14, "O" : 15, "P" : 16, "Q" : 17, "R" : 18, "S" : 19, "T" : 20, "U" : 21, "V" : 22, "W" : 23, "X" : 24, "Y" : 25, "Z" : 26};
 
-	var alphaArray = { "A" : 1, "B" : 2, "C" : 3, "D" : 4, "E" : 5, "F" : 6, "G" : 7, "H" : 8, "I" : 9, "J" : 10, "K" : 11, "L" : 12, "M" : 13, "N" : 14, "O" : 15, "P" : 16, "Q" : 17, "R" : 18, "S" : 19, "T" : 20, "U" : 21, "V" : 22, "W" : 23, "X" : 24, "Y" : 25, "Z" : 26};
-
-	return alphaArray[myLtr];
+	return alphaArray[myLtr.toUpperCase()];
 
 }
 
@@ -114,11 +109,9 @@ function letterIndex(myLtr) {
 
 function reverseLetterIndex(myNum) {
 
-	var a = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ];
+	var alphaArray = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ];
 
-	myNum = (myNum - 1) % a.length;
-
-	return a[myNum];
+	return alphaArray[(myNum - 1) % alphaArray.length];
 
 }
 
@@ -136,63 +129,25 @@ function reverseLetterIndex(myNum) {
 
 function rot13(givenString) {
 
+	newSentenceArray = [];
 
- 	function reverseLetterIndex(myNum) {
+	words = givenString.split(" ");
 
-	var a = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ];
+		for (i = 0; i < words.length; i++ ) {
 
-	myNum = (myNum - 1) % a.length;
-
-	return a[myNum];
-
-	}
-
-
-	function letterIndex(myLtr) {
-
-	var myLtr = myLtr.toUpperCase();
-
-	var alphaArray = { "A" : 1, "B" : 2, "C" : 3, "D" : 4, "E" : 5, "F" : 6, "G" : 7, "H" : 8, "I" : 9, "J" : 10, "K" : 11, "L" : 12, "M" : 13, "N" : 14, "O" : 15, "P" : 16, "Q" : 17, "R" : 18, "S" : 19, "T" : 20, "U" : 21, "V" : 22, "W" : 23, "X" : 24, "Y" : 25, "Z" : 26};
-
-	return alphaArray[myLtr];
-
-	}
-
-
-	var myNewWordArray = [];
-
-	var words = givenString.split(" ");
-
-		for (var i = 0; i < words.length; i++ ) 
-
-			{
-				var myWord = words[i];
-
-				myLettersArray = myWord.split('');
+			myLettersArray = words[i].split("");
 				
-				for (var newi = 0; newi < myLettersArray.length; newi++ ) 
+			for (newi = 0; newi < myLettersArray.length; newi++ ) {
 
-					{
+				newNum = (letterIndex(myLettersArray[newi]) + 13);
 
-						var ltr = myLettersArray[newi];
+				newSentenceArray.push(reverseLetterIndex(newNum));
+      		}
 
-						var newNum = (letterIndex(ltr) + 13);
-
-						var newLtr = reverseLetterIndex(newNum); 
-
-						myNewWordArray.push(newLtr);
-
-					}
-
-				myNewWordArray.push(" ");
-		
-			}
+			newSentenceArray.push(" ");
+    	}
 			
+	cipherString = newSentenceArray.join("");
 
-	var cipherString = myNewWordArray.join("");
-
-	cipherString = cipherString.replace(/\s*$/,"");
-
-	return cipherString;
-
+	return cipherString.trim();
 }
