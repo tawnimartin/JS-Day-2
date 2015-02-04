@@ -11,7 +11,7 @@
 
 function giveMeFive() {
 
-	return 5;
+  return 5;
 }
 
 //---------
@@ -23,7 +23,7 @@ function giveMeFive() {
 
 function noOp(parameter) {
 
-	return parameter;
+  return parameter;
 
 }
 
@@ -37,7 +37,7 @@ function noOp(parameter) {
 
 function double(myNum) {
 
-	return myNum * 2;
+  return myNum * 2;
 
 }
 
@@ -50,7 +50,7 @@ function double(myNum) {
 
 function square(myNum) {
 
-	return myNum * myNum;
+  return myNum * myNum;
 
 }
 
@@ -64,14 +64,14 @@ function square(myNum) {
 
 function sum(myArr) {
 
-	newNum = 0;
+  newNum = 0;
 
-	for (i = 0; i < myArr.length; i++ ) {
+  for (i = 0; i < myArr.length; i++ ) {
 
-		newNum += myArr[i];
-	}
-	
-	return newNum;
+    newNum += myArr[i];
+  }
+  
+  return newNum;
 
 }
 //---------
@@ -89,7 +89,7 @@ function letterIndex(myLtr) {
 
   alphaArray = { "A" : 1, "B" : 2, "C" : 3, "D" : 4, "E" : 5, "F" : 6, "G" : 7, "H" : 8, "I" : 9, "J" : 10, "K" : 11, "L" : 12, "M" : 13, "N" : 14, "O" : 15, "P" : 16, "Q" : 17, "R" : 18, "S" : 19, "T" : 20, "U" : 21, "V" : 22, "W" : 23, "X" : 24, "Y" : 25, "Z" : 26};
 
-	return alphaArray[myLtr.toUpperCase()];
+  return alphaArray[myLtr.toUpperCase()];
 
 }
 
@@ -109,9 +109,9 @@ function letterIndex(myLtr) {
 
 function reverseLetterIndex(myNum) {
 
-	var alphaArray = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ];
+  var alphaArray = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ];
 
-	return alphaArray[(myNum - 1) % alphaArray.length];
+  return alphaArray[(myNum - 1) % alphaArray.length];
 
 }
 
@@ -129,25 +129,25 @@ function reverseLetterIndex(myNum) {
 
 function rot13(givenString) {
 
-	newSentenceArray = [];
+  newSentenceArray = [];
 
-	words = givenString.split(" ");
+  words = givenString.split(" ");
 
-		for (i = 0; i < words.length; i++ ) {
+    for (i = 0; i < words.length; i++ ) {
 
-			myLettersArray = words[i].split("");
-				
-			for (newi = 0; newi < myLettersArray.length; newi++ ) {
+      myLettersArray = words[i].split("");
+        
+      for (newi = 0; newi < myLettersArray.length; newi++ ) {
 
-				newNum = (letterIndex(myLettersArray[newi]) + 13);
+        newNum = (letterIndex(myLettersArray[newi]) + 13);
 
-				newSentenceArray.push(reverseLetterIndex(newNum));
-      		}
+        newSentenceArray.push(reverseLetterIndex(newNum));
+          }
 
-			newSentenceArray.push(" ");
-    	}
-			
-	cipherString = newSentenceArray.join("");
+      newSentenceArray.push(" ");
+      }
+      
+  cipherString = newSentenceArray.join("");
 
-	return cipherString.trim();
+  return cipherString.trim();
 }
