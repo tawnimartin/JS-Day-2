@@ -136,29 +136,30 @@ function rot13(givenString) {
   var newSentenceArray, words, myLettersArray, newi, newNum, cipherString
 
   function letters() {
-
+    //split words into array containing letters
     myLettersArray = words[i].split("");
-
+      //for every letter
       for (newi = 0; newi < myLettersArray.length; newi++ ) {
-
+        //run letter through fuction to convert letter to corresponding number and add 13
         newNum = (letterIndex(myLettersArray[newi]) + 13);
-
+        //run new number through function to conver number to new corresponding letter and push to newSentenceArray
         newSentenceArray.push(reverseLetterIndex(newNum));
       }
    }
-
+   //empty array to hold final result
   newSentenceArray = [];
 
+  //Split given string into array containing words
   words = givenString.split(" ");
-
+    //for EVERY WORD
     for (i = 0; i < words.length; i++ ) {
-  
-      letters();
-
+      //run letters function
+      letters();//converts original word to new word and pushes to newSentenceArray
+      //pushes a space between each word
       newSentenceArray.push(" ");
     }
-      
+  //joins all the elements in the array into string, removing commas
   cipherString = newSentenceArray.join("");
-
+  //trim off trailing space
   return cipherString.trim();
 }
